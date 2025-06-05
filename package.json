@@ -1,0 +1,29 @@
+{
+  "name": "expressjs-reja-18-19-dars",
+  "version": "1.0.0",
+  "description": "bu bizning birinchi loyohamiz",
+  "main": "server.js",
+  "scripts": {
+    "train": "node train.js",
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "author": "Ray",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "git": "^0.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hturaev/REJA.git"
+  },
+  "bugs": {
+    "url": "https://github.com/h1turaev/REJA/issues"
+  },
+  "homepage": "https://github.com/h1turaev/REJA#readme"
+}
