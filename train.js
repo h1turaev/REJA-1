@@ -1,15 +1,15 @@
-// TASK A
-function countLetter(o, notebook) {
-    let count = 0;
-    for (let i = 0; i < notebook.length; i++) {
-        if (notebook[i] === o) {
-            count++;
-        }
-    }
-    return count;
-}
+// // TASK A
+// function countLetter(o, notebook) {
+//     let count = 0;
+//     for (let i = 0; i < notebook.length; i++) {
+//         if (notebook[i] === o) {
+//             count++;
+//         }
+//     }
+//     return count;
+// }
 
-console.log(countLetter("o", "notebook"));  // Natija: 3
+// console.log(countLetter("o", "notebook"));  // Natija: 3
 
 
 // NODE JS EVENT LOOP VA CALLBACK TUSHUNCHALARI

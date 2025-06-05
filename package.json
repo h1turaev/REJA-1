@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "train": "node train.js",
-    "start": "node server.js",
+    "start": "node train.js",
     "dev": "node server.js"
   },
   "author": "Ray",
@@ -21,9 +21,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hturaev/REJA.git"
-  },
-  "bugs": {
-    "url": "https://github.com/h1turaev/REJA/issues"
   },
   "homepage": "https://github.com/h1turaev/REJA#readme"
 }
