@@ -1,3 +1,20 @@
+// TASK B
+function countNumbers(str) {
+  let count = 0;
+
+  for (let num of str) {
+    if (num >= '0' && num <= '9') {
+      count++;
+    }
+  }
+
+  return count;
+}
+console.log(countNumbers("1991avgust31")); // ➜ 7
+
+
+
+
 // // TASK A
 // function countLetter(o, notebook) {
 //     let count = 0;
