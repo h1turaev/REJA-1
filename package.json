@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "train": "node train.js",
-    "start": "node train.js",
+    "start": "node server.js",
     "dev": "node server.js"
   },
   "author": "Ray",
