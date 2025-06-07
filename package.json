@@ -16,7 +16,8 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^5.1.0",
-    "git": "^0.1.5"
+    "git": "^0.1.5",
+    "mongodb": "^3.2.6"
   },
   "repository": {
     "type": "git",
