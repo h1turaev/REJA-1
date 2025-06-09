@@ -1,16 +1,16 @@
-// TASK B
-function countNumbers(str) {
-  let count = 0;
+// // TASK B
+// function countNumbers(str) {
+//   let count = 0;
 
-  for (let num of str) {
-    if (num >= '0' && num <= '9') {
-      count++;
-    }
-  }
+//   for (let num of str) {
+//     if (num >= '0' && num <= '9') {
+//       count++;
+//     }
+//   }
 
-  return count;
-}
-console.log(countNumbers("1991avgust31")); // ➜ 7
+//   return count;
+// }
+// console.log(countNumbers("1991avgust31")); // ➜ 7
 
 
 
@@ -147,3 +147,5 @@ console.log(countNumbers("1991avgust31")); // ➜ 7
 //     console.log("data:", data);
 //   }
 // });
+
+

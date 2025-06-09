@@ -7,7 +7,8 @@
     "train": "node train.js",
     "start": "node server.js",
     "dev": "node server.js",
-    "app": "node app.js"
+    "app": "node app.js",
+    "browser": "node browser.js"
   },
   "author": "Ray",
   "license": "ISC",
