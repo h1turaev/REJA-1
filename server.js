@@ -1,15 +1,15 @@
 const http = require("http");
 const mongodb = require("mongodb");
 
-
+// TCP - transmission control protocol
 let db;
 const connectionString = "mongodb+srv://Ray:19970419%40h@apollo11.0nx2yso.mongodb.net/";
-
+// CALL qismi
 mongodb.connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }, (err, client) => {
-    if (err) console.log("Error on connection MongoDB");
+    if (err) console.log("Error on connection MongoDB", err);
     else {
         console.log("MongoDB connection succeed");
         module.exports = client;

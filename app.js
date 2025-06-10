@@ -26,7 +26,7 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
 
 // MongoDB Chaqirish
 const db = require("./server").db();
-
+const mongodb = require("mongodb");
 
 // 1.Kirish code
 app.use(express.static("public"));  // public - bu papka nomi, u yerda statik fayllar joylashgan va har qanday browserlardan keladigan zaproslarga public papkasidagi fayllar orqali javob qaytaradi.
@@ -62,6 +62,16 @@ app.post("/create-item", (req, res) => {
 
 app.get("/author", (req, res) => {
     res.render("author", {user: user});
+});
+
+// Front-End Delete 
+app.post("/delete-item", (req, res) => {
+    const id = req.body.id;
+    db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, function (err, data) {
+        res.json({ state: "Success"});
+    });
+    // console.log(id);
+    // res.end("done");
 });
 
 

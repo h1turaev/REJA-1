@@ -1,4 +1,5 @@
 
+console.log("Front-end JS ishga tushdi");
 
 
 
@@ -41,4 +42,28 @@ axios
     .catch((err) => {
         console.log("iltimos qaytadan urinib ko'ring!");
     });
+});
+
+document
+.addEventListener("click", function (e) {
+    // delete operations
+    console.log(e.target);
+    if (e.target.classList.contains("delete-me")) {
+        if(confirm("aniq ochirmoqchimisiz?")) {
+            axios
+            .post("/delete-item", { id: e.target.getAttribute("data-id") })
+            .then((response) => {
+                console.log(response.data);
+                e.target.parentElement.parentElement.remove();
+            })
+             .catch((err) => {
+                console.log("iltimos qaytadan urinib ko'ring!");
+    });
+    
+        } 
+    }
+
+    if (e.target.classList.contains("edit-me")) {
+        alert("siz edit tugmasini bosdingiz");
+    }
 });
