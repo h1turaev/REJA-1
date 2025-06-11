@@ -1,4 +1,19 @@
-// // TASK B
+// TASK C
+function isEqual(a, b) {
+  const letter1 = hello => hello.split('').sort().join('');
+    
+  if (letter1(a) === letter1(b)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isEqual("hello", "olleh")); 
+
+
+
+// TASK B
 // function countNumbers(str) {
 //   let count = 0;
 
