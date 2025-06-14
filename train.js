@@ -1,15 +1,68 @@
-// TASK C
-function isEqual(a, b) {
-  const letter1 = hello => hello.split('').sort().join('');
-    
-  if (letter1(a) === letter1(b)) {
-    return true;
-  } else {
-    return false;
+// TASK D
+class Shop {
+  constructor(chexol, steklo, usbCabel ) {
+    this.products = {
+      'steklo': steklo,
+      'chexol': chexol,
+      'usbCabel': usbCabel,
+    };
   }
-}
 
-console.log(isEqual("hello", "olleh")); 
+  // Vaqtni qolga olvolish
+  getTime() {
+    const currentTime = new Date();
+    const hours = String(currentTime.getHours()).padStart(2, '0');
+    const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+    return `${hours}:${minutes}`;
+  }
+
+  // Qoldiqlar
+  qoldiq() {
+    const time = this.getTime();
+    console.log(`Hozir ${time}da ${this.products['steklo']} ta steklo, ${this.products['chexol']} ta chexol va ${this.products['usbCabel']} ta usb cabel mavjud!`);
+  }
+
+
+  // Sotuvlar
+  sotish(steklo, two ) {
+    const time = this.getTime();
+    this.products[steklo] -= two;
+    console.log(`${time}da ${two} ta ${steklo} sotildi.`);
+  }
+
+  sotish2(chexol, five) {
+  }
+
+
+  // Qabullar
+  qabul(steklo, ten) {
+    const time = this.getTime();
+    this.products[steklo] += ten;
+    console.log(`${time}da ${ten}ta ${steklo} qabul qilindi.`);
+  }
+};
+
+const shop = new Shop(10, 10, 10);
+shop.qoldiq();
+shop.sotish("steklo", 2);
+shop.sotish("chexol", 5);
+shop.sotish("Usb Cabel", 8);
+shop.qabul("steklo", 10);
+shop.qoldiq();
+
+
+// TASK C
+// function isEqual(a, b) {
+//   const letter1 = hello => hello.split('').sort().join('');
+    
+//   if (letter1(a) === letter1(b)) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// console.log(isEqual("hello", "olleh")); 
 
 
 
