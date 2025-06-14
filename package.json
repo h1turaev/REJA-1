@@ -25,5 +25,8 @@
     "type": "git",
     "url": "git+https://github.com/hturaev/REJA.git"
   },
-  "homepage": "https://github.com/h1turaev/REJA#readme"
+  "homepage": "https://github.com/h1turaev/REJA#readme",
+  "bugs": {
+    "url": "https://github.com/hturaev/REJA/issues"
+  }
 }
