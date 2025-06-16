@@ -1,15 +1,19 @@
 console.log('Web serverni boshlash');
-const express = require("express"); // Express frameworkini chaqirish
+// Express frameworkini chaqirish
+const express = require("express"); 
 const res = require("express/lib/response");
-const app = express();              // app(object) - Bu yerda intance, "Instance" degani — biror narsaning ishlaydigan, real nusxasi.
+// app(object) - Bu yerda intance, "Instance" degani — biror narsaning ishlaydigan, real nusxasi.
+const app = express();              
 const fs = require("fs");
 
+
+// JSON formatidagi datani object holatiga aylantirish
 let user;
 fs.readFile("database/user.json", "utf8", (err, data) => {
     if (err) {
         console.log("ERROR:", err);
     } else {
-        user = JSON.parse(data)          // JSON formatidagi datani object holatiga aylantirish
+        user = JSON.parse(data)
     }
 });
 
@@ -25,32 +29,38 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
 
 
 // MongoDB Chaqirish
-const db = require("./server").db();
-const mongodb = require("mongodb");
+    const db = require("./server").db();
+    const mongodb = require("mongodb");
 
 // 1.Kirish code
-app.use(express.static("public"));  // public - bu papka nomi, u yerda statik fayllar joylashgan va har qanday browserlardan keladigan zaproslarga public papkasidagi fayllar orqali javob qaytaradi.
-app.use(express.json());                            // Kirib kelayotgan JSON formatidagi datalarni objectga holatiga aylantirib beradi. client hamda server o'rtasidagi datalar JSON formatida boladi.
-app.use(express.urlencoded({ extended: true }));    // Traditional Form Request ya'ni html formdan keladigan zaproslarni object holatida qabul qiladi. Agar bu kodni yozmasak formdan keladigan zaproslarni express qabul qilmaydi neglect qiladi yani ignore qiladi.
+ // public - bu papka nomi, u yerda statik fayllar joylashgan va har qanday browserlardan keladigan zaproslarga public papkasidagi fayllar orqali javob qaytaradi.
+    app.use(express.static("public")); 
+ // Kirib kelayotgan JSON formatidagi datalarni objectga holatiga aylantirib beradi. client hamda server o'rtasidagi datalar JSON formatida boladi.
+    app.use(express.json());   
+// Traditional Form Request ya'ni html formdan keladigan zaproslarni object holatida qabul qiladi. Agar bu kodni yozmasak formdan keladigan zaproslarni express qabul qilmaydi neglect qiladi yani ignore qiladi.                        
+    app.use(express.urlencoded({ extended: true }));    
 
 
 
 
 
-// 2. Session code
+// 2.Session code
 // 3.View code
 // BSSR - bu back-end server side rendering degani, yani serverda render qilingan html ni back-endda yasab uni front-endga yani client browserga yuboramiz.
 // BSSR ni yaratish uchun biz ejs templating engine dan foydalanamiz. EJS - bu JavaScript templating engine bo'lib, u HTML ichida JavaScript kodlarini yozish imkonini beradi va dinamik kontent yaratishga yordam beradi.
 
 app.set("views", "views");      
-app.set("view engine", "ejs");   // EJS da front-endni yasaymiz back-end ichida.
+// EJS da front-endni yasaymiz back-end ichida.
+app.set("view engine", "ejs");   
 
 
 
 
 
 // 4. Routing code
+// borwser.js da reja loyihani frontendini yasayapmiz
 app.post("/create-item", (req, res) => {
+    console.log("==== CREATE ====");
     console.log("user entered /create-item");
     const new_reja = req.body.reja;
     db.collection("plans").insertOne({ reja: new_reja },  (err, data) => {
@@ -60,41 +70,10 @@ app.post("/create-item", (req, res) => {
 });
 
 
-app.get("/author", (req, res) => {
-    res.render("author", {user: user});
-});
 
-// DELETE OPERATION 
-app.post("/delete-item", (req, res) => {
-    const id = req.body.id;
-    db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, function (err, data) {
-        res.json({ state: "Success"});
-    });
-    // console.log(id);
-    // res.end("done");
-});
-
-// EDIT OPERATION
-app.post("/edit-item", (req, res) => {
-    const data = req.body;
-    console.log(data);
-    db.collection("plans").findOneAndUpdate({_id: new mongodb.ObjectId(data.id)}, {$set: { reja: data.new_input } },
-    function (err, data) {
-        res.json({ state: "Success" });
-    });
-});
-
-
-// DELETE ALL OPERATION
-app.post("/delete-all", (req, res) => {
-    if (req.body.delete_all) {
-        db.collection("plans").deleteMany(function () {
-         res.json({ state: "Hamma Rejalarni O'chirildi"});
-        });
-    }
-});
-
+// READ OPERATION 
 app.get('/', function (req, res) {
+    console.log("==== READ ====");
     console.log("user entered /")
     db.collection("plans")
     .find()
@@ -107,5 +86,49 @@ app.get('/', function (req, res) {
         }
     });
 });
+
+
+
+// UPDATE OPERATION
+app.post("/edit-item", (req, res) => {
+    console.log("==== EDIT ====");
+    const data = req.body;
+    console.log(data);
+    db.collection("plans").findOneAndUpdate({_id: new mongodb.ObjectId(data.id)}, {$set: { reja: data.new_input } },
+    function (err, data) {
+        res.json({ state: "Success" });
+    });
+});
+
+
+
+// DELETE OPERATION 
+app.post("/delete-item", (req, res) => {
+    console.log("==== DELETE ====");
+    const id = req.body.id;
+    db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, function (err, data) {
+        res.json({ state: "Success"});
+    });
+    
+});
+
+
+
+// DELETE ALL OPERATION
+app.post("/delete-all", (req, res) => {
+    console.log("==== DELETE ALL ====");
+    if (req.body.delete_all) {
+    db.collection("plans").deleteMany(function () {
+    res.json({ state: "Hamma Rejalarni O'chirildi"});
+    });
+  }
+});
+
+
+
+app.get("/author", (req, res) => {
+    res.render("author", {user: user});
+});
+
 
 module.exports = app;

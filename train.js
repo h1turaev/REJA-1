@@ -46,7 +46,6 @@ const shop = new Shop(10, 10, 10);
 shop.qoldiq();
 shop.sotish("steklo", 2);
 shop.sotish("chexol", 5);
-shop.sotish("Usb Cabel", 8);
 shop.qabul("steklo", 10);
 shop.qoldiq();
 

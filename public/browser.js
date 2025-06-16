@@ -65,6 +65,7 @@ document
 
         //EDIT OPERATION 
     if (e.target.classList.contains("edit-me")) {
+        console.log("e.target.classList", e.target.classList);
         let userInput = prompt("O'zgartirishni kiriting", e.target.parentElement.parentElement.querySelector(".item-text").innerHTML);
         if(userInput) {
         axios.post("/edit-item", {
