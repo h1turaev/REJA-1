@@ -1,3 +1,14 @@
+// TASK E
+function reverseString(str) {
+    return str.split('').reverse().join('');
+};
+console.log(reverseString("koob"));
+console.log(reverseString("yenom , repiv "));
+
+
+
+
+
 // TASK D
 class Shop {
   constructor(chexol, steklo, usbCabel ) {
